@@ -9,8 +9,6 @@ import com.qualcomm.robotcore.util.RobotLog;
 public class OpModeBase extends LinearOpMode
 {
     private static String TAG = "OpModeBase";
-    public enum LogLevel {None, Some, Verbose}              // TODO: move this.
-    private OpModeBase.LogLevel logLevel = OpModeBase.LogLevel.Verbose;
 
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
@@ -31,12 +29,13 @@ public class OpModeBase extends LinearOpMode
 
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
+            // this is where all the gamepad-related callbacks get fired.
             gamepadWrapper.updateGamepadState(gamepad1);
 
             double drive = gamepad1.left_stick_y;
             double turn  =  gamepad1.right_stick_x;
 
-            if (this.logLevel == LogLevel.Verbose) {
+            if (LoggerWrapper.logLevel == LoggerWrapper.LogLevel.VerboseWithTelemetry) {
                 telemetry.addData("Status", "Run Time: " + runtime.toString());
                 telemetry.addData("Left Stick", "Left Stick. X (%.2f), Y (%.2f). Right Stick. X (%.2f), Y (%.2f).",
                         gamepad1.left_stick_x, gamepad1.left_stick_y, gamepad1.right_stick_x, gamepad1.right_stick_y);
