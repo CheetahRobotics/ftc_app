@@ -19,7 +19,7 @@ public class OpModeBase extends LinearOpMode
     @Override
     public void runOpMode() { }
 
-    protected void runOpModeBase() {
+    protected void runOpModeBase(StateMachine stateMachine) {
         RobotLog.ii(TAG, "------- START ----------");
         telemetry.addData("Status", "Initialized");
         telemetry.update();
@@ -34,6 +34,8 @@ public class OpModeBase extends LinearOpMode
 
             double drive = gamepad1.left_stick_y;
             double turn  =  gamepad1.right_stick_x;
+
+            telemetry.addData("State", stateMachine.currentStateAsString());
 
             if (LoggerWrapper.logLevel == LoggerWrapper.LogLevel.VerboseWithTelemetry) {
                 telemetry.addData("Status", "Run Time: " + runtime.toString());

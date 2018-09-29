@@ -4,10 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.GamepadWrapper;
 import org.firstinspires.ftc.teamcode.OpModeBase;
-import org.firstinspires.ftc.teamcode.State;
 import org.firstinspires.ftc.teamcode.StateMachine;
-
-import java.util.HashMap;
 
 @TeleOp(name = "TeleOpMode", group = "Linear Opmode")
 public class TeleOpMode extends OpModeBase {
@@ -15,12 +12,22 @@ public class TeleOpMode extends OpModeBase {
 
     @Override
     public void runOpMode() {
-        HashMap<Integer, State> states = new HashMap<>();
-        states.put(1, new State1(hardwareMap, gamepad1));
+
         this.gamepadWrapper = new GamepadWrapper(gamepad1);
-        StateMachine stateMachine = new StateMachine(states, gamepadWrapper);
+        StateMachine stateMachine = new StateMachine(hardwareMap, gamepadWrapper, telemetry);
+
+        // Don't change anything before this line.
+        // The only time you need to modify this class is to add new states....
+        // Right here:
+
+        stateMachine.addNewState(1, new State1());
+        stateMachine.addNewState(2, new State2());
+        stateMachine.addNewState(3, new State3());
+        stateMachine.updateState(1);    // Start at state number 1.
+
+        // Don't change anything after this line.
 
         // hand over everything from here on to OpModeBase
-        runOpModeBase();
+        runOpModeBase(stateMachine);
     }
 }
