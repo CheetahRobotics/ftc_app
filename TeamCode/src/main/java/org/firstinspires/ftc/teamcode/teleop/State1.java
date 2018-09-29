@@ -9,7 +9,10 @@ public class State1 extends StateBase {
             stateMachine.updateState(2);
     }
 
+
     public void dpad_down_changed(boolean dpad_down) {
         log("=======> dpad_down ", dpad_down);
+        if (dpad_down)
+            stateMachine.updateState(3);
     }
 }
