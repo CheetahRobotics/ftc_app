@@ -1,8 +1,8 @@
 package org.firstinspires.ftc.teamcode.teleop;
 
-import org.firstinspires.ftc.teamcode.StateBase;
+import org.firstinspires.ftc.teamcode.stateMachine.StateBase;
 
-import static org.firstinspires.ftc.teamcode.LoggerWrapper.log;
+import static org.firstinspires.ftc.teamcode.stateMachine.LoggerWrapper.log;
 
 public class State2 extends StateBase {
     public void dpad_up_changed(boolean dpad_up) {
