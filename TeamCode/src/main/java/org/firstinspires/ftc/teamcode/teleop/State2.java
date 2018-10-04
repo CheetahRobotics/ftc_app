@@ -6,7 +6,7 @@ import org.firstinspires.ftc.teamcode.stateMachine.StateMachine;
 import static org.firstinspires.ftc.teamcode.stateMachine.LoggerWrapper.log;
 
 public class State2 extends StateBase {
-    public State2(StateMachine stateMachine) {
+    State2(StateMachine stateMachine) {
         super(stateMachine);
     }
 
