@@ -40,6 +40,7 @@ public class OpModeBase extends LinearOpMode
             stateMachine.preEventsCallback();
             // this is where all the gamepad-related callbacks get fired.
             gamepadWrapper.updateGamepadState(gamepad1);
+            stateMachine.doSensorCallbacks();
             stateMachine.postEventsCallback();
 
             double drive = gamepad1.left_stick_y;

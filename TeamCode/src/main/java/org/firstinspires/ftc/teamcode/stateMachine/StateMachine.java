@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.stateMachine;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.TouchSensor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
@@ -65,5 +66,14 @@ public class StateMachine {
 
         currentState.postEventsCallback();
         currentState.updateTelemetry(telemetry);
+    }
+    private final Map<String, TouchSensor> touchSensorMap = new HashMap<>();
+    public void registerTouchSensor(String name) {
+        touchSensorMap.put(name, hardwareMap.touchSensor.get(name));
+    }
+
+    public void doSensorCallbacks() {
+        for (Map.Entry<String, TouchSensor> entry : touchSensorMap.entrySet())
+            currentState.touchSensorCallback(entry.getKey(), entry.getValue());
     }
 }

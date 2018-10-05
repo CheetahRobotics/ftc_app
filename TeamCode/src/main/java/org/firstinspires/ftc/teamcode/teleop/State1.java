@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.teleop;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.TouchSensor;
 
 import org.firstinspires.ftc.teamcode.stateMachine.StateBase;
 import org.firstinspires.ftc.teamcode.stateMachine.StateMachine;
@@ -42,7 +43,9 @@ public class State1 extends StateBase {
     public void timeUpdate(double sinceOpModePlay, double sinceStateStart) {
         addTelemetry("Time", "%f %f", sinceOpModePlay, sinceStateStart);
     }
-
+    public void touchSensorCallback(String key, TouchSensor touchSensor) {
+        addTelemetry(key, "%f", touchSensor.getValue());
+    }
     public void postEvents() {
 
         // this is called after all events
