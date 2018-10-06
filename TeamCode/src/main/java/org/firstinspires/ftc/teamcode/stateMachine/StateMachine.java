@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.stateMachine;
 
+import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.TouchSensor;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -24,6 +25,7 @@ public class StateMachine {
     final HardwareMap hardwareMap;
     final Telemetry telemetry;
     final ElapsedTime runtime;
+    private Gamepad gamepad;
 
     public StateMachine(
             HardwareMap hardwareMap,
@@ -75,5 +77,9 @@ public class StateMachine {
     public void doSensorCallbacks() {
         for (Map.Entry<String, TouchSensor> entry : touchSensorMap.entrySet())
             currentState.touchSensorCallback(entry.getKey(), entry.getValue());
+    }
+
+    void setGamepad(Gamepad gamepad) {
+        currentState.setGamepad(gamepad);
     }
 }

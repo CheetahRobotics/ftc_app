@@ -46,8 +46,10 @@ public class State1 extends StateBase {
     public void touchSensorCallback(String key, TouchSensor touchSensor) {
         addTelemetry(key, "%f", touchSensor.getValue());
     }
-    public void postEvents() {
+    public void postEventsCallback() {
 
         // this is called after all events
+        addTelemetry("LeftStick", "X: %f, Y: %f",
+                gamepad.left_stick_x, gamepad.left_stick_y);
     }
 }

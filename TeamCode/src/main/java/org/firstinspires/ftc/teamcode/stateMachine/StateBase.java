@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.stateMachine;
 
+import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.TouchSensor;
 
@@ -18,6 +19,7 @@ public class StateBase extends GamepadListenerBase {
     protected final String stateName;
     private final Map<String, String> telemetryData = new TreeMap<>();
     private double startTime;
+    protected Gamepad gamepad;
 
     protected StateBase(StateMachine stateMachine) {
         this.stateMachine = stateMachine;
@@ -71,5 +73,9 @@ public class StateBase extends GamepadListenerBase {
     }
 
     public void touchSensorCallback(String key, TouchSensor value) {
+    }
+
+    public void setGamepad(Gamepad gamepad) {
+        this.gamepad = gamepad;
     }
 }
