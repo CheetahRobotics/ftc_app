@@ -25,6 +25,4 @@ public class State3 extends StateBase {
     }
 
 
-
-
 }
