@@ -14,13 +14,13 @@ public class State2 extends StateBase {
         touchSensor = hardwareMap.touchSensor.get("touch_sensor");
     }
 
-    public void dpad_up_changed(boolean dpad_up) {
+    public void dpadUpChanged(boolean dpad_up) {
         log("=======> dpad_up ", dpad_up);
         if (dpad_up)
             stateMachine.updateState(3);
     }
 
-    public void dpad_down_changed(boolean dpad_down) {
+    public void dpadDownChanged(boolean dpad_down) {
         log("=======> dpad_down ", dpad_down);
         if (dpad_down)
             stateMachine.updateState(1);

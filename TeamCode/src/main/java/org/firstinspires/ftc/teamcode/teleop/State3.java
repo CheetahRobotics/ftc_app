@@ -10,14 +10,14 @@ public class State3 extends StateBase {
         super(stateMachine);
     }
 
-    public void dpad_up_changed(boolean dpad_up) {
+    public void dpadUpChanged(boolean dpad_up) {
         log("=======> dpad_up ", dpad_up);
         if (dpad_up)
             stateMachine.updateState(1);
     }
 
 
-    public void dpad_down_changed(boolean dpad_down) {
+    public void dpadDownChanged(boolean dpad_down) {
         log("=======> dpad_up ", dpad_down);
         if (dpad_down)
             stateMachine.updateState(2);
