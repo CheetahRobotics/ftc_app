@@ -11,20 +11,17 @@ public class State3 extends StateBase {
     }
 
     public void dpadUpChanged(boolean dpad_up) {
-        log("=======> dpad_up ", dpad_up);
         if (dpad_up)
             stateMachine.updateState(1);
     }
 
 
     public void dpadDownChanged(boolean dpad_down) {
-        log("=======> dpad_up ", dpad_down);
         if (dpad_down)
             stateMachine.updateState(2);
 
     }
-
-
-
-
+    public void postEventsCallback() {
+        // so something useful like drive.
+    }
 }

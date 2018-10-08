@@ -8,7 +8,6 @@ import org.firstinspires.ftc.teamcode.stateMachine.StateMachine;
 
 @TeleOp(name = "TeleOpMode", group = "Linear Opmode")
 public class TeleOpMode extends OpModeBase {
-    private static final String TAG = "GamepadListenerBase";
 
     @Override
     public void setupStates(StateMachine stateMachine) {
