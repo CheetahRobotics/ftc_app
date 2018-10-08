@@ -33,12 +33,6 @@ State1, State2, and State3, but you can call them anything you want.
 Now you need to create 3 classes corresponding to the 3 states above. Here is an example implementation:
 
 ```java
-package org.firstinspires.ftc.teamcode.teleop;
-
-import org.firstinspires.ftc.teamcode.stateMachine.StateBase;
-import org.firstinspires.ftc.teamcode.stateMachine.StateMachine;
-
-import static org.firstinspires.ftc.teamcode.stateMachine.LoggerWrapper.log;
 
 public class State3 extends StateBase {
     State3(StateMachine stateMachine) {
