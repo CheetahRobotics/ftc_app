@@ -72,9 +72,13 @@ public class StateBase extends GamepadListenerBase {
     protected void postEventsCallback() {
     }
 
+    // ==== Sensor management ====
+
     public void touchSensorCallback(String key, TouchSensor value) {
     }
 
+    // TODO: implement more sensor callbacks.
+    
     public void setGamepad(Gamepad gamepad) {
         this.gamepad = gamepad;
     }
