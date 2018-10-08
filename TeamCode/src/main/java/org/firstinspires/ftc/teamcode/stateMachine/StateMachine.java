@@ -21,10 +21,10 @@ public class StateMachine {
     private StateBase currentState;
     private String currentTag;
 
-    final GamepadWrapper gamepadWrapper;
+    private final GamepadWrapper gamepadWrapper;
     final HardwareMap hardwareMap;
-    final Telemetry telemetry;
-    final ElapsedTime runtime;
+    private final Telemetry telemetry;
+    private final ElapsedTime runtime;
     private Gamepad gamepad;
 
     public StateMachine(
@@ -48,7 +48,7 @@ public class StateMachine {
         currentState = states.get(stateNumber);
         currentState.youveBeenStarted(runtime.seconds());
         currentStateNumber = stateNumber;
-        gamepadWrapper.updateGamepadListener((GamepadListener) currentState);
+        gamepadWrapper.updateGamepadListener(currentState);
         log(TAG, currentStateAsString());
     }
 
@@ -59,11 +59,11 @@ public class StateMachine {
         states.put(stateNumber, state);
     }
 
-    public void preEventsCallback() {
+    void preEventsCallback() {
         currentState.preEventsCallback();
     }
 
-    public void postEventsCallback() {
+    void postEventsCallback() {
         currentState.timeUpdate(runtime.seconds(), runtime.seconds()-currentState.getStartTime());
 
         currentState.postEventsCallback();

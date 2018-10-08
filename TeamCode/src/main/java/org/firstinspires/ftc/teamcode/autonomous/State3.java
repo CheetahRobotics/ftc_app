@@ -14,6 +14,7 @@ public class State3 extends StateBase {
         rightDrive  = hardwareMap.get(DcMotor.class, "motor_1");
     }
 
+    @Override
     public void timeUpdate(double sinceOpModePlay, double sinceStateStart) {
         if (sinceStateStart > 2.0) {
             leftDrive.setPower(0.5);
@@ -23,6 +24,7 @@ public class State3 extends StateBase {
         addTelemetry("Time", "%f %f", sinceOpModePlay, sinceStateStart);
     }
 
+    @Override
     public void postEventsCallback() {
         leftDrive.setDirection(DcMotor.Direction.FORWARD);
         leftDrive.setPower(0.5);

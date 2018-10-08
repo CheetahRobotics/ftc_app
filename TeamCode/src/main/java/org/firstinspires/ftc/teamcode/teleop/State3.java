@@ -15,12 +15,14 @@ public class State3 extends StateBase {
             stateMachine.updateState(1);
     }
 
-
+    @Override
     public void dpadDownChanged(boolean dpad_down) {
         if (dpad_down)
             stateMachine.updateState(2);
 
     }
+
+    @Override
     public void postEventsCallback() {
         // so something useful like drive.
     }

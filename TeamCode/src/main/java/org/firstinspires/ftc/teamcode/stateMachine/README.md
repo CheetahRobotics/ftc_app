@@ -6,6 +6,7 @@ The files in this directory support a simple state machine framework for use wit
 
 What you want to do is create an OpMode. The OpMode is very simple. 
 It just lists the sensors you care about, and declares the states in your state machine.
+It must extend `OpModeBase` and implement the method `setupStates`.
 Something like:
 
 ```java
@@ -38,18 +39,21 @@ public class State3 extends StateBase {
     State3(StateMachine stateMachine) {
         super(stateMachine);
     }
-
+    
+    @Override
     public void dpadUpChanged(boolean dpad_up) {
         if (dpad_up)
             stateMachine.updateState(1);
     }
 
-
+    @Override
     public void dpadDownChanged(boolean dpad_down) {
         if (dpad_down)
             stateMachine.updateState(2);
 
     }
+
+    @Override
     public void postEventsCallback() {
         // so something useful like drive.
     }

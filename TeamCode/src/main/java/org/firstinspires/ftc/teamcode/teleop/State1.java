@@ -13,6 +13,7 @@ public class State1 extends StateBase {
         leftDrive  = hardwareMap.get(DcMotor.class, "motor_1");
     }
 
+    @Override
     public void dpadUpChanged(boolean dpad_up) {
         if (dpad_up) {
             stateMachine.updateState(2);
@@ -20,12 +21,15 @@ public class State1 extends StateBase {
         }
     }
 
+    @Override
     public void dpadDownChanged(boolean dpad_down) {
         if (dpad_down) {
             stateMachine.updateState(3);
             leftDrive.setPower(0.0);
         }
     }
+
+    @Override
     public void dpadLeftChanged(boolean dpad_left) {
         if (dpad_left) {
             leftDrive.setDirection(DcMotor.Direction.FORWARD);
@@ -33,6 +37,8 @@ public class State1 extends StateBase {
             addTelemetry("Motor", "Driving forward");
         }
     }
+
+    @Override
     public void dpadRightChanged(boolean dpad_right) {
         if (dpad_right) {
             leftDrive.setDirection(DcMotor.Direction.REVERSE);
@@ -40,12 +46,18 @@ public class State1 extends StateBase {
             addTelemetry("Motor", "Driving backwards");
         }
     }
+
+    @Override
     public void timeUpdate(double sinceOpModePlay, double sinceStateStart) {
         addTelemetry("Time", "%f %f", sinceOpModePlay, sinceStateStart);
     }
+
+    @Override
     public void touchSensorCallback(String key, TouchSensor touchSensor) {
         addTelemetry(key, "%f", touchSensor.getValue());
     }
+
+    @Override
     public void postEventsCallback() {
 
         // this is called after all events
