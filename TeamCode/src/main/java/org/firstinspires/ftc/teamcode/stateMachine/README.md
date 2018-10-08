@@ -1,6 +1,6 @@
 # FTC Robotics State Machine Framework #
 
-The files in this directory support a simple state machine framework for use with the ftc_app.
+The files in this directory support a simple state machine framework for use with the ftc_app. To use this framework, simply copy this `stateMachine` directory into your `teamcode` directory, and then create opModes and states as described below.
 
 ## Quick Start ##
 
