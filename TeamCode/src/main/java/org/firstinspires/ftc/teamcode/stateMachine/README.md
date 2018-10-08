@@ -41,7 +41,6 @@ public class State3 extends StateBase {
 
     public void dpadUpChanged(boolean dpad_up) {
         if (dpad_up)
-            
             stateMachine.updateState(1);
     }
 
@@ -57,6 +56,7 @@ public class State3 extends StateBase {
 }
 
 ```
+So all that does is use the dpad to change state.
 
 #### A few things to note for the State classes:
 * They must extend `StateBase`.
