@@ -30,7 +30,7 @@ public class TeleOpMode extends OpModeBase {
 That's it. We've registered our one touch sensor and declared the 3 states in our state machine. I called them
 State1, State2, and State3, but you can call them anything you want.
 
-Now you need to create 3 classes corresponding to the 3 states above. 
+Now you need to create 3 classes corresponding to the 3 states above. Here is an example implementation:
 
 ```java
 package org.firstinspires.ftc.teamcode.teleop;
@@ -71,7 +71,7 @@ public class State3 extends StateBase {
 * Any other non-event driven code should go in `postEventsCallback()`. This is normally where
 you'd put driving code for instance. (You could do driving in an event-driven manner too, but that
 seems a little complicated).
-* You change state by calling `stateMachine.updateState(blah)` where `blah` is the new state 
+* You change state by calling `stateMachine.updateState(num)` where `num` is the new state number 
 you wish to transition to. 
 
 There are 3 kinds of events that your state can handle:
@@ -91,7 +91,7 @@ This is what the touch sensor looks like (currently the only sensor implemented)
 
 #### Other conveniences:
 
-Telemetry in event driven systems can be a pain. So this logic has been wrapped
+Telemetry in event-driven systems can be a pain. So this logic has been wrapped
 and we have a simple way to do it: Simply call `addTelemetry()`:
 
 ```
