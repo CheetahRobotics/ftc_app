@@ -15,7 +15,6 @@ import static org.firstinspires.ftc.teamcode.stateMachine.LoggerWrapper.log;
 public class StateBase extends GamepadListenerBase {
     protected final StateMachine stateMachine;
     protected final HardwareMap hardwareMap;
-    protected final GamepadWrapper gamepadWrapper;
     protected final String stateName;
     private final Map<String, String> telemetryData = new TreeMap<>();
     private double startTime;
@@ -24,9 +23,12 @@ public class StateBase extends GamepadListenerBase {
     protected StateBase(StateMachine stateMachine) {
         this.stateMachine = stateMachine;
         this.hardwareMap = stateMachine.hardwareMap;
-        this.gamepadWrapper = stateMachine.gamepadWrapper;
         this.stateName = this.getClass().getSimpleName();
     }
+    void setGamepad(Gamepad gamepad) {
+        this.gamepad = gamepad;
+    }
+
     // ==== logging ====
     protected void log(String label, boolean args) {
         LoggerWrapper.log(stateName, label, args);
@@ -62,7 +64,7 @@ public class StateBase extends GamepadListenerBase {
     void youveBeenStarted(double elapsedSeconds) {
         startTime = elapsedSeconds;
     }
-    protected double getStartTime() { return startTime; }
+    double getStartTime() { return startTime; }
 
     // ==== life cycle management ====
 
@@ -73,13 +75,9 @@ public class StateBase extends GamepadListenerBase {
     }
 
     // ==== Sensor management ====
+    // TODO: implement more sensor callbacks.
 
     public void touchSensorCallback(String key, TouchSensor value) {
     }
 
-    // TODO: implement more sensor callbacks.
-    
-    public void setGamepad(Gamepad gamepad) {
-        this.gamepad = gamepad;
-    }
 }
