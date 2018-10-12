@@ -8,7 +8,9 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import static org.firstinspires.ftc.teamcode.stateMachine.LoggerWrapper.log;
 
@@ -25,6 +27,7 @@ public class StateMachine {
     final HardwareMap hardwareMap;
     private final Telemetry telemetry;
     private final ElapsedTime runtime;
+    private final Set<String> allStates = new HashSet<>();
     private Gamepad gamepad;
 
     public StateMachine(
@@ -54,9 +57,11 @@ public class StateMachine {
 
     public void addNewState(int stateNumber, StateBase state) {
         if (states.containsKey(stateNumber))
-            throw new RuntimeException("That state is already in the map! Can't add it twice");
-
+            throw new RuntimeException("That state number is already in the map! Can't add it twice");
+        if (allStates.contains(state.getClass().getSimpleName()))
+            throw new RuntimeException("Can't have the same state class in the map twice.");
         states.put(stateNumber, state);
+        allStates.add(state.getClass().getSimpleName());
     }
 
     void preEventsCallback() {
