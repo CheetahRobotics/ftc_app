@@ -19,8 +19,6 @@ public class State1 extends StateBase {
     @Override
     public void timeUpdate(double sinceOpModePlay, double sinceStateStart) {
         if (sinceStateStart > 2.0) {
-            leftDrive.setPower(0.0);
-            rightDrive.setPower(0.0);
             stateMachine.updateState(2);
         }
         addTelemetry("Time", "%f %f", sinceOpModePlay, sinceStateStart);
