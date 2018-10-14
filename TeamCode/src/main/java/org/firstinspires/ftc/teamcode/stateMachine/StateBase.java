@@ -12,7 +12,7 @@ import java.util.TreeMap;
 import static org.firstinspires.ftc.teamcode.stateMachine.LoggerWrapper.log;
 
 
-public class StateBase extends GamepadListenerBase {
+public abstract class StateBase extends GamepadListenerBase {
     protected final StateMachine stateMachine;
     protected final HardwareMap hardwareMap;
     protected final String stateName;
