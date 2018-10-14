@@ -13,13 +13,13 @@ public class OpModeBase extends LinearOpMode
     private static String TAG = "OpModeBase";
 
     // Declare OpMode members.
-    protected ElapsedTime runtime = new ElapsedTime();
+    private ElapsedTime runtime = new ElapsedTime();
     private DcMotor leftDrive = null;
     private DcMotor rightDrive = null;
-    protected GamepadWrapper gamepadWrapper;
+    private GamepadWrapper gamepadWrapper;
     protected StateMachine stateMachine;
 
-    public void setupStates(StateMachine s) {
+    public void initStateMachine(StateMachine s) {
         throw new RuntimeException("No states defined. You need to define some states. Stopping.");
     }
 
@@ -40,7 +40,7 @@ public class OpModeBase extends LinearOpMode
 
         this.gamepadWrapper = new GamepadWrapper(gamepad1);
         stateMachine = new StateMachine(hardwareMap, gamepadWrapper, telemetry, runtime);
-        setupStates(stateMachine);
+        initStateMachine(stateMachine);
 
         telemetry.addData("Status", "Initialized");
         telemetry.update();

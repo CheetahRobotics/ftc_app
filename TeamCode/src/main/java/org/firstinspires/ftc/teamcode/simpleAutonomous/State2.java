@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import org.firstinspires.ftc.teamcode.stateMachine.StateBase;
 import org.firstinspires.ftc.teamcode.stateMachine.StateMachine;
 
-public class State2 extends StateBase {
+class State2 extends StateBase {
     State2(StateMachine stateMachine) {
         super(stateMachine);
     }
@@ -13,7 +13,7 @@ public class State2 extends StateBase {
     @Override
     public void timeUpdate(double sinceOpModePlay, double sinceStateStart) {
         if (sinceStateStart > 3.0) {
-            stateMachine.updateState(3);
+            stateMachine.updateState(State3.class);
         }
         addTelemetry("State2 - Time", "%f %f", sinceOpModePlay, sinceStateStart);
     }

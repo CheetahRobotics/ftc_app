@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.util.Range;
 import org.firstinspires.ftc.teamcode.stateMachine.StateBase;
 import org.firstinspires.ftc.teamcode.stateMachine.StateMachine;
 
-public class State1 extends StateBase {
+class State1 extends StateBase {
     private ElapsedTime runtime = new ElapsedTime();
     private DcMotor leftDrive ;
     private DcMotor rightDrive ;

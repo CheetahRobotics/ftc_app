@@ -6,7 +6,7 @@ The files in this directory support a simple state machine framework for use wit
 
 What you want to do is create an OpMode. The OpMode is very simple. 
 It just lists the sensors you care about, and declares the states in your state machine.
-It must extend `OpModeBase` and implement the method `setupStates`.
+It must extend `OpModeBase` and implement the method `initStateMachine`.
 Something like:
 
 ```java
@@ -16,7 +16,7 @@ package org.firstinspires.ftc.teamcode.teleop;
 public class TeleOpMode extends OpModeBase {
    
     @Override
-    public void setupStates(StateMachine stateMachine) {
+    public void initStateMachine(StateMachine stateMachine) {
         stateMachine.registerTouchSensor("touch_sensor");
         stateMachine.addNewState(1, new State1(stateMachine));
         stateMachine.addNewState(2, new State2(stateMachine));

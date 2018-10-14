@@ -12,12 +12,9 @@ public class OpMode extends OpModeBase {
     private static final String TAG = "GamepadListenerBase";
 
     @Override
-    public void setupStates(StateMachine stateMachine) {
+    public void initStateMachine(StateMachine stateMachine) {
 //        stateMachine.registerTouchSensor("touch_sensor");
-        stateMachine.addNewState(1, new State1(stateMachine));
-        stateMachine.addNewState(2, new State2(stateMachine));
-        stateMachine.addNewState(3, new State3(stateMachine));
-        stateMachine.updateState(1);    // Start at state number 1.
+        stateMachine.updateState(State1.class);    // Start at state number 1.
     }
 
 }

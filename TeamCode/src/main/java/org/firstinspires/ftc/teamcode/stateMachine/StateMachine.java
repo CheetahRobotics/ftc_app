@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
+import java.lang.reflect.Constructor;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -17,9 +18,7 @@ import static org.firstinspires.ftc.teamcode.stateMachine.LoggerWrapper.log;
 public class StateMachine {
 
     private static final String TAG = "StateMachine";
-    private final Map<Integer, StateBase> states = new HashMap<>();
 
-    private int currentStateNumber;
     private StateBase currentState;
     private String currentTag;
 
@@ -27,7 +26,6 @@ public class StateMachine {
     final HardwareMap hardwareMap;
     private final Telemetry telemetry;
     private final ElapsedTime runtime;
-    private final Set<String> allStates = new HashSet<>();
     private Gamepad gamepad;
 
     public StateMachine(
@@ -42,26 +40,19 @@ public class StateMachine {
     }
 
     public final String currentStateAsString() {
-        return String.format("%d, %s", currentStateNumber, currentState.stateName);
+        return String.format("%s", currentState.stateName);
     }
 
-    public void updateState(int stateNumber) {
-        if (!states.containsKey(stateNumber))
-            throw new RuntimeException("That state is not in the map!");
-        currentState = states.get(stateNumber);
-        currentState.youveBeenStarted(runtime.seconds());
-        currentStateNumber = stateNumber;
+    public void updateState(Class<? extends StateBase> aState) {
+        try {
+            currentState = aState.getConstructor(StateMachine.class).newInstance(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e.getMessage());
+        }
+        currentState.startTimerForNewState(runtime.seconds());
         gamepadWrapper.updateGamepadListener(currentState);
         log(TAG, currentStateAsString());
-    }
-
-    public void addNewState(int stateNumber, StateBase state) {
-        if (states.containsKey(stateNumber))
-            throw new RuntimeException("That state number is already in the map! Can't add it twice");
-        if (allStates.contains(state.getClass().getSimpleName()))
-            throw new RuntimeException("Can't have the same state class in the map twice.");
-        states.put(stateNumber, state);
-        allStates.add(state.getClass().getSimpleName());
     }
 
     void preEventsCallback() {
@@ -70,7 +61,6 @@ public class StateMachine {
 
     void postEventsCallback() {
         currentState.timeUpdate(runtime.seconds(), runtime.seconds()-currentState.getStartTime());
-
         currentState.postEventsCallback();
         currentState.updateTelemetry(telemetry);
     }

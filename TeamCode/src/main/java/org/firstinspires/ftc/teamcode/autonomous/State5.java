@@ -1,4 +1,4 @@
 package org.firstinspires.ftc.teamcode.autonomous;
 
-public class State5 {
+class State5 {
 }

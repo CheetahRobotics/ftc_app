@@ -10,10 +10,8 @@ import org.firstinspires.ftc.teamcode.stateMachine.StateMachine;
 public class TeleOpMode extends OpModeBase {
 
     @Override
-    public void setupStates(StateMachine stateMachine) {
-        //stateMachine.registerTouchSensor("touch_sensor");
-        stateMachine.addNewState(1, new State1(stateMachine));
-        stateMachine.updateState(1);    // Start at state number 1.
+    public void initStateMachine(StateMachine stateMachine) {
+        stateMachine.updateState(State1.class);    // Start at state number 1.
     }
 
 }

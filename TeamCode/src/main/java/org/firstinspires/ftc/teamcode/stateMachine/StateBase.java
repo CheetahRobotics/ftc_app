@@ -61,7 +61,7 @@ public abstract class StateBase extends GamepadListenerBase {
     protected void timeUpdate(double sinceOpModePlay, double sinceStateStart) {
 
     }
-    void youveBeenStarted(double elapsedSeconds) {
+    void startTimerForNewState(double elapsedSeconds) {
         startTime = elapsedSeconds;
     }
     double getStartTime() { return startTime; }

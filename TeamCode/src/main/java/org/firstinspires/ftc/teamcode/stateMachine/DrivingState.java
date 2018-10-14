@@ -9,14 +9,15 @@ public abstract class DrivingState extends StateBase {
     private final DcMotor leftDrive;
     private final DcMotor rightDrive;
     private final double timeToDriveInSeconds;
-    private final int nextState;
+    private final Class<? extends StateBase> nextState;
     private final double leftPower;
     private final double rightPower;
+
     public DrivingState(StateMachine stateMachine,
-                 double timeToDriveInSeconds,
-                 int nextState,
-                 double leftPower,
-                 double rightPower) {
+                        double timeToDriveInSeconds,
+                        Class<? extends StateBase> nextState,
+                        double leftPower,
+                        double rightPower) {
         super(stateMachine);
         leftDrive = hardwareMap.get(DcMotor.class, "motor_2");
         rightDrive = hardwareMap.get(DcMotor.class, "motor_1");
@@ -25,6 +26,7 @@ public abstract class DrivingState extends StateBase {
         this.leftPower = leftPower;
         this.rightPower = rightPower;
     }
+
     @Override
     public void timeUpdate(double sinceOpModePlay, double sinceStateStart) {
         if (sinceStateStart > timeToDriveInSeconds) {
