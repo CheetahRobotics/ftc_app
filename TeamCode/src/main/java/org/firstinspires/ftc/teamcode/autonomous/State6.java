@@ -3,12 +3,12 @@ package org.firstinspires.ftc.teamcode.autonomous;
 import org.firstinspires.ftc.teamcode.stateMachine.DrivingState;
 import org.firstinspires.ftc.teamcode.stateMachine.StateMachine;
 
-class State5  extends DrivingState {
-    State5(StateMachine stateMachine) {
+public class State6 extends DrivingState {
+    State6(StateMachine stateMachine) {
         super(stateMachine,
                 2.,
-                State6.class,
+                State7.class,
                 0,
-                0);
+                -.5);
     }
 }

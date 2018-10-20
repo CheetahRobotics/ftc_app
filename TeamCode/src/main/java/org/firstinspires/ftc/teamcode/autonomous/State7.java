@@ -1,17 +1,15 @@
 package org.firstinspires.ftc.teamcode.autonomous;
 
-import com.qualcomm.robotcore.hardware.DcMotor;
-
 import org.firstinspires.ftc.teamcode.stateMachine.DrivingState;
-import org.firstinspires.ftc.teamcode.stateMachine.StateBase;
 import org.firstinspires.ftc.teamcode.stateMachine.StateMachine;
 
-public class State3 extends DrivingState {
-    State3(StateMachine stateMachine) {
+public class State7 extends DrivingState {
+    State7(StateMachine stateMachine) {
         super(stateMachine,
-                1.5,
-                KnockJewel.class,
+                3.,
+                State8.class,
                 0.5,
                 -.5);
     }
 }
+

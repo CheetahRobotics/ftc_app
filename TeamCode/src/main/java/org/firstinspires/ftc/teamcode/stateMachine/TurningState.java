@@ -4,13 +4,13 @@ public class TurningState extends DrivingState{
 
     public TurningState(StateMachine stateMachine,
                         Class<? extends StateBase> nextState,
-                        boolean isRightTurn){
+                        boolean isLeftTurn){
         super(
              stateMachine,
-             .5,
+             1.0,
                 nextState,
-                isRightTurn ? .5 : 0,
-                isRightTurn ? 0 : .5
+                isLeftTurn ? .5 : 0,
+                isLeftTurn ? 0 : .5
         );
     }
 }
