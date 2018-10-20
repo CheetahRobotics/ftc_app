@@ -8,12 +8,12 @@ import com.qualcomm.robotcore.util.Range;
 import org.firstinspires.ftc.teamcode.stateMachine.StateBase;
 import org.firstinspires.ftc.teamcode.stateMachine.StateMachine;
 
-class State1 extends StateBase {
+public class State1 extends StateBase {
     private ElapsedTime runtime = new ElapsedTime();
     private DcMotor leftDrive ;
     private DcMotor rightDrive ;
 
-    State1(StateMachine stateMachine) {
+    public State1(StateMachine stateMachine) {
         super(stateMachine);
         leftDrive  = hardwareMap.get(DcMotor.class, "motor_1");
         rightDrive = hardwareMap.get(DcMotor.class, "motor_2");
@@ -36,8 +36,8 @@ class State1 extends StateBase {
         double leftPower;
         double rightPower;
 
-        double drive = -gamepad.left_stick_x;
-        double turn  = gamepad.right_stick_y;
+        double drive = -gamepad.right_stick_x;
+        double turn  = gamepad.left_stick_y;
         leftPower    = Range.clip(drive + turn, -1.0, 1.0) ;
         rightPower   = Range.clip(drive - turn, -1.0, 1.0) ;
         leftDrive.setPower(leftPower);
@@ -48,3 +48,4 @@ class State1 extends StateBase {
                 gamepad.left_stick_x, gamepad.left_stick_y);
     }
 }
+
