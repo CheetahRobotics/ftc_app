@@ -2,13 +2,12 @@ package org.firstinspires.ftc.teamcode.autonomous;
 
 import org.firstinspires.ftc.teamcode.stateMachine.DrivingState;
 import org.firstinspires.ftc.teamcode.stateMachine.StateMachine;
+import org.firstinspires.ftc.teamcode.stateMachine.TurningState;
 
-public class State8 extends DrivingState {
+public class State8 extends TurningState {
     State8(StateMachine stateMachine) {
         super(stateMachine,
-                2.,
                 State9.class,
-                0.5,
-                0);
+                false);
     }
 }

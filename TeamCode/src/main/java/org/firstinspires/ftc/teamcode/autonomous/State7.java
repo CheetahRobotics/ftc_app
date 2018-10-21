@@ -6,7 +6,7 @@ import org.firstinspires.ftc.teamcode.stateMachine.StateMachine;
 public class State7 extends DrivingState {
     State7(StateMachine stateMachine) {
         super(stateMachine,
-                3.,
+                1.,
                 State8.class,
                 0.5,
                 -.5);

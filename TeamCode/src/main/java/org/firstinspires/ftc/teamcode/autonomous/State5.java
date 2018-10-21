@@ -8,7 +8,7 @@ class State5  extends DrivingState {
         super(stateMachine,
                 2.,
                 State6.class,
-                0,
-                0);
+                -0.5,
+                0.5);
     }
 }
