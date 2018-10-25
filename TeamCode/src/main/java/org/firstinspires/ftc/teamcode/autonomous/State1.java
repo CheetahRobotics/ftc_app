@@ -10,5 +10,6 @@ class State1 extends DrivingState {
                 State2.class,
                 0.5,
                 -.5);
+        // after droping drives forward
     }
 }

@@ -10,6 +10,7 @@ class KnockJewel  extends DrivingState {
                 State5.class,
                 0,
                 0);
+        //Scaning and knocking over the jewel
     }
 }
 
