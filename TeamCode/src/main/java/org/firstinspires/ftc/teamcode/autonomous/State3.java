@@ -7,7 +7,7 @@ import org.firstinspires.ftc.teamcode.stateMachine.StateBase;
 import org.firstinspires.ftc.teamcode.stateMachine.StateMachine;
 
 public class State3 extends DrivingState {
-    State3(StateMachine stateMachine) {
+    public State3(StateMachine stateMachine) {
         super(stateMachine,
                 2,
                 KnockJewel.class,

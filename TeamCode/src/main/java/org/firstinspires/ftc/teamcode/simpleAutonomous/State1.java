@@ -7,8 +7,8 @@ import com.qualcomm.robotcore.hardware.TouchSensor;
 import org.firstinspires.ftc.teamcode.stateMachine.StateBase;
 import org.firstinspires.ftc.teamcode.stateMachine.StateMachine;
 
-class State1 extends StateBase {
-    State1(StateMachine stateMachine) {
+public class State1 extends StateBase {
+    public State1(StateMachine stateMachine) {
         super(stateMachine);
     }
 

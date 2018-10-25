@@ -5,7 +5,7 @@ import org.firstinspires.ftc.teamcode.stateMachine.StateMachine;
 import org.firstinspires.ftc.teamcode.stateMachine.TurningState;
 
 public class State6 extends TurningState {
-    State6(StateMachine stateMachine) {
+    public State6(StateMachine stateMachine) {
         super(stateMachine,
                 State7.class,
                 true);

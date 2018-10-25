@@ -5,8 +5,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import org.firstinspires.ftc.teamcode.stateMachine.StateBase;
 import org.firstinspires.ftc.teamcode.stateMachine.StateMachine;
 
-class State3 extends StateBase {
-    State3(StateMachine stateMachine) {
+public class State3 extends StateBase {
+    public State3(StateMachine stateMachine) {
         super(stateMachine);
     }
 

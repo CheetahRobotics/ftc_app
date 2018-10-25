@@ -4,7 +4,7 @@ import org.firstinspires.ftc.teamcode.stateMachine.DrivingState;
 import org.firstinspires.ftc.teamcode.stateMachine.StateMachine;
 
 public class PlaceFlag extends DrivingState {
-    PlaceFlag(StateMachine stateMachine) {
+    public  PlaceFlag(StateMachine stateMachine) {
         super(stateMachine,
                 2.,
                 State11.class,
