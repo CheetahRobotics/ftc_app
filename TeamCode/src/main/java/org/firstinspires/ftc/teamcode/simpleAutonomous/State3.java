@@ -13,7 +13,7 @@ public class State3 extends StateBase {
     @Override
     public void timeUpdate(double sinceOpModePlay, double sinceStateStart) {
         if (sinceStateStart > 2.0) {
-            stateMachine.updateState(State1.class);
+            stateMachine.stop();
         }
         addTelemetry("State3 - Time", "%f %f", sinceOpModePlay, sinceStateStart);
     }

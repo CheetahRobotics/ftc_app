@@ -39,7 +39,7 @@ public class OpModeBase extends LinearOpMode
         RobotLog.ii(TAG, "------- START ----------");
 
         this.gamepadWrapper = new GamepadWrapper(gamepad1);
-        stateMachine = new StateMachine(hardwareMap, gamepadWrapper, telemetry, runtime);
+        stateMachine = new StateMachine(hardwareMap, gamepadWrapper, telemetry, runtime, this);
         initStateMachine(stateMachine);
 
         telemetry.addData("Status", "Initialized");

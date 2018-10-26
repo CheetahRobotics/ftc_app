@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.stateMachine;
 
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.TouchSensor;
@@ -26,21 +27,27 @@ public class StateMachine {
     final HardwareMap hardwareMap;
     private final Telemetry telemetry;
     private final ElapsedTime runtime;
+    private final OpMode opMode;
     private Gamepad gamepad;
 
     public StateMachine(
             HardwareMap hardwareMap,
             GamepadWrapper gamepadWrapper,
             Telemetry telemetry,
-            ElapsedTime runtime) {
+            ElapsedTime runtime,
+            OpMode opMode) {
         this.gamepadWrapper = gamepadWrapper;
         this.hardwareMap = hardwareMap;
         this.telemetry = telemetry;
         this.runtime = runtime;
+        this.opMode = opMode;
     }
 
     public final String currentStateAsString() {
         return String.format("%s", currentState.stateName);
+    }
+    public void stop() {
+        this.opMode.stop();
     }
 
     public void updateState(Class<? extends StateBase> aState) {
