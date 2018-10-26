@@ -53,9 +53,16 @@ public class StateMachine {
     public void updateState(Class<? extends StateBase> aState) {
         try {
             currentState = aState.getConstructor(StateMachine.class).newInstance(this);
+        }
+        catch (NoSuchMethodException e) {
+            e.printStackTrace();
+            throw new RuntimeException(
+                    String.format("Can't start %s, make sure class and constructors are public!",
+                            aState.getSimpleName()
+                            ));
         } catch (Exception e) {
             e.printStackTrace();
-            throw new RuntimeException(e.getMessage());
+            throw new RuntimeException(e.toString());
         }
         currentState.startTimerForNewState(runtime.seconds());
         gamepadWrapper.updateGamepadListener(currentState);
