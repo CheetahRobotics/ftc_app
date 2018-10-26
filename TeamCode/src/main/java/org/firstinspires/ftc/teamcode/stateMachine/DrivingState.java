@@ -6,13 +6,15 @@ import org.firstinspires.ftc.teamcode.stateMachine.StateBase;
 import org.firstinspires.ftc.teamcode.stateMachine.StateMachine;
 
 public abstract class DrivingState extends StateBase {
-    private final DcMotor leftDrive;
-    private final DcMotor rightDrive;
+    protected final DcMotor leftDrive;
+    protected final DcMotor rightDrive;
     private final double timeToDriveInSeconds;
     private final Class<? extends StateBase> nextState;
     private final double leftPower;
     private final double rightPower;
+    private final boolean usingEncoders;
 
+    // Time based driving
     public DrivingState(StateMachine stateMachine,
                         double timeToDriveInSeconds,
                         Class<? extends StateBase> nextState,
@@ -25,6 +27,30 @@ public abstract class DrivingState extends StateBase {
         this.nextState = nextState;
         this.leftPower = leftPower;
         this.rightPower = rightPower;
+        this.usingEncoders = false;
+    }
+
+    // Encoder based driving
+    public DrivingState(StateMachine stateMachine,
+                        Class<? extends StateBase> nextState,
+                        double leftPower,
+                        double rightPower) {
+        super(stateMachine);
+        leftDrive = hardwareMap.get(DcMotor.class, "motor_2");
+        rightDrive = hardwareMap.get(DcMotor.class, "motor_1");
+        this.timeToDriveInSeconds = 100000;
+        this.nextState = nextState;
+        this.leftPower = leftPower;
+        this.rightPower = rightPower;
+        this.usingEncoders = true;
+
+        // TODO: we may want to enable stop and FLOAT.
+        leftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        rightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        leftDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
     @Override
@@ -41,7 +67,10 @@ public abstract class DrivingState extends StateBase {
         leftDrive.setPower(leftPower);
         rightDrive.setDirection(DcMotor.Direction.FORWARD);
         rightDrive.setPower(rightPower);
-        addTelemetry("Motor", "Driving forward");
     }
 
+    protected void stopMotors() {
+        leftDrive.setPower(0.0);
+        rightDrive.setPower(0.0);
+    }
 }
