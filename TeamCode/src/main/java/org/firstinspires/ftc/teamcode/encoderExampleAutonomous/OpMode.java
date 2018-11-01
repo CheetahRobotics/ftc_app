@@ -14,7 +14,7 @@ public class OpMode extends OpModeBase {
 
     @Override
     public void initStateMachine(StateMachine stateMachine) {
-        stateMachine.updateState(Drive1Rotations.class);    // Start at state number 1.
+        stateMachine.updateState(TurnLeft.class);    // Start at state number 1.
     }
 
 }

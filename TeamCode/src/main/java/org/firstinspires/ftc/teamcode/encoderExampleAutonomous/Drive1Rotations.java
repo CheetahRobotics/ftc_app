@@ -23,6 +23,8 @@ public class Drive1Rotations extends DrivingState {
         addTelemetry("Right Motor Pos: ", "%d", rightDrive.getCurrentPosition());
 
         if (leftDrive.getCurrentPosition() > COUNTS_PER_MOTOR) {
+            addTelemetry("Left Motor Pos: ", "%d", leftDrive.getCurrentPosition());
+            addTelemetry("Right Motor Pos: ", "%d", rightDrive.getCurrentPosition());
             stopMotors();
             try {
                 Thread.sleep(1000);
