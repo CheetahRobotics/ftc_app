@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.stateMachine.GamepadWrapper;
 import org.firstinspires.ftc.teamcode.stateMachine.OpModeBase;
+import org.firstinspires.ftc.teamcode.stateMachine.RobotCalibration;
 import org.firstinspires.ftc.teamcode.stateMachine.StateMachine;
 
 @Autonomous(name = "AutonomousOpMode", group = "Linear Opmode")
@@ -13,7 +14,7 @@ public class OpMode extends OpModeBase {
 
     @Override
     public void initStateMachine(StateMachine stateMachine) {
-//        stateMachine.registerTouchSensor("touch_sensor");
+        stateMachine.setRobotCalibration(new RobotCalibration(11.5, 288));
         stateMachine.updateState(State1.class);    // Start at state number 1.
     }
 

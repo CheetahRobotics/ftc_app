@@ -31,7 +31,8 @@ public class TurningState extends DrivingState{
         addTelemetry("Left Motor Pos: ", "%d", leftDrive.getCurrentPosition());
         addTelemetry("Right Motor Pos: ", "%d", rightDrive.getCurrentPosition());
 
-        if (Math.abs(leftDrive.getCurrentPosition()) > 440.64) {
+        if (Math.abs(leftDrive.getCurrentPosition()) > 440.64 ||
+            Math.abs(rightDrive.getCurrentPosition()) > 440.64) {
             addTelemetry("Left Motor Pos: ", "%d", leftDrive.getCurrentPosition());
             addTelemetry("Right Motor Pos: ", "%d", rightDrive.getCurrentPosition());
             stopMotors();
@@ -40,7 +41,7 @@ public class TurningState extends DrivingState{
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            stateMachine.stop();
+            stateMachine.updateState(this.nextState);
         }
     }
 }

@@ -7,7 +7,7 @@ public class KnockJewel  extends DrivingState {
     public  KnockJewel(StateMachine stateMachine) {
         super(stateMachine,
                 2.,
-                State5.class,
+                PlaceFlag.class,
                 0,
                 0);
         //Scaning and knocking over the jewel

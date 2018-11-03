@@ -9,7 +9,7 @@ public abstract class DrivingState extends StateBase {
     protected final DcMotor leftDrive;
     protected final DcMotor rightDrive;
     private final double timeToDriveInSeconds;
-    private final Class<? extends StateBase> nextState;
+    protected final Class<? extends StateBase> nextState;
     private final double leftPower;
     private final double rightPower;
     private final boolean usingEncoders;
@@ -70,6 +70,8 @@ public abstract class DrivingState extends StateBase {
     }
 
     protected void stopMotors() {
+        leftDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         leftDrive.setPower(0.0);
         rightDrive.setPower(0.0);
     }

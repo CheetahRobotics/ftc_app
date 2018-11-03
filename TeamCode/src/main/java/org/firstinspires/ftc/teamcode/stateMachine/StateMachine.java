@@ -29,6 +29,7 @@ public class StateMachine {
     private final ElapsedTime runtime;
     private final OpMode opMode;
     private Gamepad gamepad;
+    private RobotCalibration robotCalibration;
 
     public StateMachine(
             HardwareMap hardwareMap,
@@ -90,5 +91,13 @@ public class StateMachine {
 
     void setGamepad(Gamepad gamepad) {
         currentState.setGamepad(gamepad);
+    }
+
+    public void setRobotCalibration(RobotCalibration robotCalibration) {
+        this.robotCalibration = robotCalibration;
+    }
+
+    public RobotCalibration getRobotCalibration() {
+        return robotCalibration;
     }
 }
