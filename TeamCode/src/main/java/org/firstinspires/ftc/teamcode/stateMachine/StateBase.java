@@ -80,4 +80,13 @@ public abstract class StateBase extends GamepadListenerBase {
     public void touchSensorCallback(String key, TouchSensor value) {
     }
 
+    // === Helper functions to make state code cleaner. ===
+    protected void sleep(int milliseconds) {
+        try {
+            Thread.sleep(milliseconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+    }
 }

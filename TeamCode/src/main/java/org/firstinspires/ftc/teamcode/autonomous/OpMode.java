@@ -14,7 +14,13 @@ public class OpMode extends OpModeBase {
 
     @Override
     public void initStateMachine(StateMachine stateMachine) {
-        stateMachine.setRobotCalibration(new RobotCalibration(11.5, 288));
+        // If you want to use this code with a new robot,
+        // just update the RobotCallibration numbers on the next line:
+        stateMachine.setRobotCalibration(new RobotCalibration(
+                11.5,
+                288,
+                440));
+
         stateMachine.updateState(State1.class);    // Start at state number 1.
     }
 

@@ -11,7 +11,6 @@ public class State2 extends TurningState {
     public State2(StateMachine stateMachine) {
         super(stateMachine,
                 State3.class,
-                90.0,
                 false);
     }
 }

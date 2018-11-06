@@ -13,6 +13,7 @@ public class State1 extends DrivingState {
                 .5);
         // after droping drives forward
     }
+
     @Override
     public void postEventsCallback() {
         super.postEventsCallback();
@@ -20,24 +21,12 @@ public class State1 extends DrivingState {
         addTelemetry("Left Motor Pos: ", "%d", leftDrive.getCurrentPosition());
         addTelemetry("Right Motor Pos: ", "%d", rightDrive.getCurrentPosition());
 
-        if (leftDrive.getCurrentPosition() >
-                stateMachine.getRobotCalibration().getCounts(45.0)) {
-            if (Math.abs(leftDrive.getCurrentPosition()) > 440.64 ||
-                    Math.abs(rightDrive.getCurrentPosition()) > 440.64) {
-                addTelemetry("Left Motor Pos: ", "%d", leftDrive.getCurrentPosition());
-                addTelemetry("Right Motor Pos: ", "%d", rightDrive.getCurrentPosition());
-                stopMotors();
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                stateMachine.updateState(this.nextState);
-            }
+        if (leftDrive.getCurrentPosition() > stateMachine.getRobotCalibration().getCounts(45.0)) {
             addTelemetry("Left Motor Pos: ", "%d", leftDrive.getCurrentPosition());
             addTelemetry("Right Motor Pos: ", "%d", rightDrive.getCurrentPosition());
             stopMotors();
-            stateMachine.updateState(State2.class);
+            sleep(1000);
+            stateMachine.updateState(this.nextState);
         }
     }
 }

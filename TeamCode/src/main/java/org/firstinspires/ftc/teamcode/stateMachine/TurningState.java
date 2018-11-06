@@ -7,18 +7,6 @@ public class TurningState extends DrivingState{
                         boolean isLeftTurn){
         super(
                 stateMachine,
-                1.0,
-                nextState,
-                isLeftTurn ? .5 : 0,
-                isLeftTurn ? 0 : .5
-        );
-    }
-    public TurningState(StateMachine stateMachine,
-                        Class<? extends StateBase> nextState,
-                        double degreesToTurn,
-                        boolean isLeftTurn){
-        super(
-                stateMachine,
                 nextState,
                 isLeftTurn ? 0 : -.5 ,
                 isLeftTurn ? .5 : 0
@@ -31,16 +19,12 @@ public class TurningState extends DrivingState{
         addTelemetry("Left Motor Pos: ", "%d", leftDrive.getCurrentPosition());
         addTelemetry("Right Motor Pos: ", "%d", rightDrive.getCurrentPosition());
 
-        if (Math.abs(leftDrive.getCurrentPosition()) > 440.64 ||
-            Math.abs(rightDrive.getCurrentPosition()) > 440.64) {
+        if (Math.abs(leftDrive.getCurrentPosition()) > stateMachine.getRobotCalibration().getCountsFor90DegreeTurn() ||
+            Math.abs(rightDrive.getCurrentPosition()) > stateMachine.getRobotCalibration().getCountsFor90DegreeTurn()) {
             addTelemetry("Left Motor Pos: ", "%d", leftDrive.getCurrentPosition());
             addTelemetry("Right Motor Pos: ", "%d", rightDrive.getCurrentPosition());
             stopMotors();
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            sleep(1000);
             stateMachine.updateState(this.nextState);
         }
     }

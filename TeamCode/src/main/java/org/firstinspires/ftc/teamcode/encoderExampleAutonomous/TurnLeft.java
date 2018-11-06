@@ -8,9 +8,7 @@ public class TurnLeft extends TurningState {
     public TurnLeft(StateMachine stateMachine) {
         super(stateMachine,
                 State2.class,
-                90,
                     true
                 );
     }
-
 }
