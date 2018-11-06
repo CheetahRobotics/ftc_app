@@ -7,6 +7,8 @@ public class TurningState extends DrivingState{
                         boolean isLeftTurn){
         super(
                 stateMachine,
+                0.0,
+                10000.0,
                 nextState,
                 isLeftTurn ? 0 : -.5 ,
                 isLeftTurn ? .5 : 0
@@ -19,8 +21,8 @@ public class TurningState extends DrivingState{
         addTelemetry("Left Motor Pos: ", "%d", leftDrive.getCurrentPosition());
         addTelemetry("Right Motor Pos: ", "%d", rightDrive.getCurrentPosition());
 
-        if (Math.abs(leftDrive.getCurrentPosition()) > stateMachine.getRobotCalibration().getCountsFor90DegreeTurn() ||
-            Math.abs(rightDrive.getCurrentPosition()) > stateMachine.getRobotCalibration().getCountsFor90DegreeTurn()) {
+        if (Math.abs(leftDrive.getCurrentPosition()) > stateMachine.getRobotCalibration().countsFor90DegreeTurn ||
+            Math.abs(rightDrive.getCurrentPosition()) > stateMachine.getRobotCalibration().countsFor90DegreeTurn) {
             addTelemetry("Left Motor Pos: ", "%d", leftDrive.getCurrentPosition());
             addTelemetry("Right Motor Pos: ", "%d", rightDrive.getCurrentPosition());
             stopMotors();

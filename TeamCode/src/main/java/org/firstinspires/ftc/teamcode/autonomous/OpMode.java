@@ -23,5 +23,4 @@ public class OpMode extends OpModeBase {
 
         stateMachine.updateState(State1.class);    // Start at state number 1.
     }
-
 }
