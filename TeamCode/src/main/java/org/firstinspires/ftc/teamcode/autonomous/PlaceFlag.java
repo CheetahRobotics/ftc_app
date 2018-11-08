@@ -10,7 +10,7 @@ public class PlaceFlag extends DrivingState {
     public PlaceFlag(StateMachine stateMachine) {
         super(stateMachine,
                 0.0,
-                85.0,
+                100.0,
                 Stop.class,
                 0.5,
                 -.5);
