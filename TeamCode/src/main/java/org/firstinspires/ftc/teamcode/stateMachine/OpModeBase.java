@@ -7,6 +7,9 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.RobotLog;
 
+import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
+import org.opencv.android.CameraBridgeViewBase;
+
 
 public class OpModeBase extends LinearOpMode
 {
@@ -33,7 +36,16 @@ public class OpModeBase extends LinearOpMode
         }
         return gamepadCopy;        
     }
-    
+
+
+    public void beforeLoop() {
+
+    }
+
+    public void afterLoop() {
+
+    }
+
     @Override
     public void runOpMode() {
         RobotLog.ii(TAG, "------- START ----------");
@@ -46,6 +58,7 @@ public class OpModeBase extends LinearOpMode
         telemetry.update();
 
         waitForStart();
+        beforeLoop();
         runtime.reset();
 
         // run until the end of the match (driver presses STOP)
@@ -75,5 +88,13 @@ public class OpModeBase extends LinearOpMode
             }
             telemetry.update();
         }
+        afterLoop();
+    }
+    public void startOpenCV(CameraBridgeViewBase.CvCameraViewListener2 cameraViewListener) {
+        FtcRobotControllerActivity.turnOnCameraView.obtainMessage(1, cameraViewListener).sendToTarget();
+    }
+
+    public void stopOpenCV() {
+        FtcRobotControllerActivity.turnOffCameraView.obtainMessage().sendToTarget();
     }
 }
