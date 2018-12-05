@@ -43,7 +43,7 @@ public abstract class StateBase extends GamepadListenerBase {
     }
 
     // ==== telemetry ====
-    protected void addTelemetry(String caption, String format, Object ...args) {
+    public void addTelemetry(String caption, String format, Object ...args) {
         telemetryData.put(caption, String.format(format, args));
     }
     protected void clearTelemetry(String caption) {

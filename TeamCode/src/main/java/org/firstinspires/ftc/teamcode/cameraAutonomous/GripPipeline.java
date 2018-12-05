@@ -30,9 +30,9 @@ public class GripPipeline {
     private Mat blurOutput = new Mat();
     private MatOfKeyPoint findBlobsOutput = new MatOfKeyPoint();
 
-    static {
-        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-    }
+//    static {
+//        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+//    }
 
     /**
      * This is the primary method that runs the entire pipeline and updates the outputs.
@@ -47,6 +47,10 @@ public class GripPipeline {
 
         // Step CV_erode0:
         Mat cvErodeSrc = hslThresholdOutput;
+
+        // ATTENTION! This line was not in the original GripCode:
+        org.opencv.core.Core.bitwise_not(hslThresholdOutput, cvErodeSrc);
+
         Mat cvErodeKernel = new Mat();
         Point cvErodeAnchor = new Point(-1, -1);
         double cvErodeIterations = 1.0;
@@ -122,7 +126,7 @@ public class GripPipeline {
      * @param hue The min and max hue
      * @param sat The min and max saturation
      * @param lum The min and max luminance
-     * @param output The image in which to store the output.
+     * @param out The image in which to store the output.
      */
     private void hslThreshold(Mat input, double[] hue, double[] sat, double[] lum,
                               Mat out) {

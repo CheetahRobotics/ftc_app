@@ -47,6 +47,12 @@ public class StateMachine {
     public final String currentStateAsString() {
         return String.format("%s", currentState.stateName);
     }
+    public final StateBase  currentState() {
+        return currentState;
+    }
+    public final OpMode opMode() {
+        return this.opMode;
+    }
     public void stop() {
         this.opMode.stop();
     }

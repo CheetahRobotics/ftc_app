@@ -7,8 +7,8 @@ import com.qualcomm.robotcore.hardware.TouchSensor;
 import org.firstinspires.ftc.teamcode.stateMachine.StateBase;
 import org.firstinspires.ftc.teamcode.stateMachine.StateMachine;
 
-class State1 extends StateBase {
-    State1(StateMachine stateMachine) {
+public class State1 extends StateBase {
+    public State1(StateMachine stateMachine) {
         super(stateMachine);
     }
 
@@ -18,7 +18,18 @@ class State1 extends StateBase {
     }
 
     @Override
+    public void dpadUpChanged(boolean dpad_up) {
+        if (dpad_up) {
+           OpMode opmode = (OpMode) stateMachine.opMode();
+           opmode.incrementView();
+        }
+    }
+
+    @Override
     public void postEventsCallback() {
-        addTelemetry("Motor", "Driving forward");
+        OpMode opmode = (OpMode) stateMachine.opMode();
+        addTelemetry("Blob Center", "%f, %f",
+                opmode.getCenterOfBiggestBlob().x,
+                opmode.getCenterOfBiggestBlob().y);
     }
 }
