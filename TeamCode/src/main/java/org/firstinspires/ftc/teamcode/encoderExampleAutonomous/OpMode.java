@@ -18,10 +18,10 @@ public class OpMode extends OpModeBase {
         // If you want to use this code with a new robot,
         // just update the RobotCallibration numbers on the next line:
         stateMachine.setRobotCalibration(new RobotCalibration(
-                11.5,
-                288,
-                440));
-        stateMachine.updateState(TurnLeft.class);
+                12.57,
+                1307,
+                2614));
+        stateMachine.updateState(Drive1Rotations.class);
     }
 
 }

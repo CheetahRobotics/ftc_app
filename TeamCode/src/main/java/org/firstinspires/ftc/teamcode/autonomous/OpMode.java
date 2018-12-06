@@ -18,8 +18,8 @@ public class OpMode extends OpModeBase {
         // just update the RobotCallibration numbers on the next line:
         stateMachine.setRobotCalibration(new RobotCalibration(
                 12.57,
-                1440,
-                2880));
+                1307,
+                2614));
 
         stateMachine.updateState(State1.class);    // Start at state number 1.
     }

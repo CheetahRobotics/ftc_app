@@ -10,7 +10,7 @@ public class Drive1Rotations extends DrivingState {
         super(stateMachine,
                 0.0,
                 stateMachine.getRobotCalibration().wheelCircumfrenceInches,
-                TurnLeft.class,
+                Stop.class,
                 -0.5,
                 .5);
     }
