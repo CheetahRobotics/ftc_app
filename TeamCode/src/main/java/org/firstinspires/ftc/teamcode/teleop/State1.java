@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.teleop;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.TouchSensor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
@@ -14,11 +15,21 @@ public class State1 extends StateBase {
     private DcMotor rightDrive ;
     private DcMotor arm;
 
+
+    static final double INCREMENT   = 0.01;
+    static final int    CYCLE_MS    =   50;
+    static final double MAX_POS     =  1.0;
+    static final double MIN_POS     =  0.0;
+    Servo servo;
+    double  position = (MAX_POS - MIN_POS) / 2;
+
+
     public State1(StateMachine stateMachine) {
         super(stateMachine);
         leftDrive  = hardwareMap.get(DcMotor.class, "motor_1");
         rightDrive = hardwareMap.get(DcMotor.class, "motor_2");
         arm = hardwareMap.get(DcMotor.class,"motor_3");
+        servo = hardwareMap.get(Servo.class, "main _hand");
     }
 
 
@@ -42,13 +53,13 @@ public class State1 extends StateBase {
 
         double drive = -gamepad.right_stick_x;
         double turn  = gamepad.left_stick_y;
-        float lift = gamepad.left_trigger;
-        float drop = gamepad.right_trigger;
+        float lift = -gamepad.right_trigger;
+        float drop = gamepad.left_trigger;
 
         leftPower   = Range.clip(drive + turn, -1.0, 1.0) ;
         rightPower   = Range.clip(drive - turn, -1.0, 1.0) ;
-        liftpower = Range.clip(lift,-1.0,1.0);
-        droppower = Range.clip(drop,-1.0,1.0);
+        liftpower = Range.clip(lift,-1,1.0);
+        droppower = Range.clip(drop,-1,1);
 
         leftDrive.setPower(leftPower);
         rightDrive.setPower(rightPower);
@@ -62,6 +73,7 @@ public class State1 extends StateBase {
                 gamepad.left_trigger, gamepad.right_trigger);
         addTelemetry("Power", " Drive: %f, Turn: %f ",
                 leftPower, rightPower);
+        telemetry.addData("Servo Position", "%5.2f", position);
     }
 }
 
