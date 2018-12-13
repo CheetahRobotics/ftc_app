@@ -73,7 +73,7 @@ public class State1 extends StateBase {
                 gamepad.left_trigger, gamepad.right_trigger);
         addTelemetry("Power", " Drive: %f, Turn: %f ",
                 leftPower, rightPower);
-        telemetry.addData("Servo Position", "%5.2f", position);
+        addTelemetry("Servo Position", "%5.2f", position);
     }
 }
 

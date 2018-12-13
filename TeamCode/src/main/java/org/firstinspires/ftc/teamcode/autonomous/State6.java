@@ -4,10 +4,9 @@ import org.firstinspires.ftc.teamcode.stateMachine.DrivingState;
 import org.firstinspires.ftc.teamcode.stateMachine.StateMachine;
 import org.firstinspires.ftc.teamcode.stateMachine.Stop;
 
-public class PlaceFlag extends DrivingState {
-    static final double COUNTS_PER_MOTOR = 240;
+public class State6 extends DrivingState {
 
-    public PlaceFlag(StateMachine stateMachine) {
+    public State6(StateMachine stateMachine) {
         super(stateMachine,
                 0.0,
                 100.0,
