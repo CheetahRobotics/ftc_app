@@ -14,14 +14,31 @@ public class State1 extends StateBase {
 
     @Override
     public void timeUpdate(double sinceOpModePlay, double sinceStateStart) {
-        addTelemetry("State1 - Time", "%f %f", sinceOpModePlay, sinceStateStart);
+        OpMode opmode = (OpMode) stateMachine.opMode();
+
+        addTelemetry("H Value", "%f", opmode.getH());
     }
 
     @Override
     public void dpadUpChanged(boolean dpad_up) {
         if (dpad_up) {
-           OpMode opmode = (OpMode) stateMachine.opMode();
-           opmode.incrementView();
+            OpMode opmode = (OpMode) stateMachine.opMode();
+            opmode.incrementView();
+        }
+    }
+    @Override
+    public void dpadRightChanged(boolean dpad_right) {
+        if (dpad_right) {
+            OpMode opmode = (OpMode) stateMachine.opMode();
+            opmode.incrementH();
+        }
+    }
+
+    @Override
+    public void dpadLeftChanged(boolean dpad_left) {
+        if (dpad_left) {
+            OpMode opmode = (OpMode) stateMachine.opMode();
+            opmode.decrementH();
         }
     }
 

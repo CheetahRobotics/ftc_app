@@ -37,12 +37,12 @@ public class GripPipeline {
     /**
      * This is the primary method that runs the entire pipeline and updates the outputs.
      */
-    public void process(Mat source0) {
+    public void process(Mat source0, float H) {
         // Step HSL_Threshold0:
         Mat hslThresholdInput = source0;
-        double[] hslThresholdHue = {0.0, 37.89473684210525};
-        double[] hslThresholdSaturation = {110.07194244604317, 255.0};
-        double[] hslThresholdLuminance = {0.0, 255.0};
+        double[] hslThresholdHue = {H, H+10.0};
+        double[] hslThresholdSaturation = {155.0, 255.0};
+        double[] hslThresholdLuminance = {45.0, 201.0};
         hslThreshold(hslThresholdInput, hslThresholdHue, hslThresholdSaturation, hslThresholdLuminance, hslThresholdOutput);
 
         // Step CV_erode0:
@@ -53,7 +53,7 @@ public class GripPipeline {
 
         Mat cvErodeKernel = new Mat();
         Point cvErodeAnchor = new Point(-1, -1);
-        double cvErodeIterations = 1.0;
+        double cvErodeIterations = 4.0;
         int cvErodeBordertype = Core.BORDER_CONSTANT;
         Scalar cvErodeBordervalue = new Scalar(-1);
         cvErode(cvErodeSrc, cvErodeKernel, cvErodeAnchor, cvErodeIterations, cvErodeBordertype, cvErodeBordervalue, cvErodeOutput);
@@ -66,14 +66,14 @@ public class GripPipeline {
         // Step Blur0:
         Mat blurInput = maskOutput;
         BlurType blurType = BlurType.get("Box Blur");
-        double blurRadius = 100.0;
+        double blurRadius = 45.0;
         blur(blurInput, blurType, blurRadius, blurOutput);
 
         // Step Find_Blobs0:
         Mat findBlobsInput = blurOutput;
         double findBlobsMinArea = 180.0;
         double[] findBlobsCircularity = {0.0, 1.0};
-        boolean findBlobsDarkBlobs = false;
+        boolean findBlobsDarkBlobs = true;
         findBlobs(findBlobsInput, findBlobsMinArea, findBlobsCircularity, findBlobsDarkBlobs, findBlobsOutput);
 
     }

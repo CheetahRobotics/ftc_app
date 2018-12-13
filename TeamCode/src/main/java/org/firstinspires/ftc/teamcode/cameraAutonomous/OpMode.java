@@ -27,6 +27,7 @@ import static org.opencv.imgproc.Imgproc.circle;
 public class OpMode extends OpModeBase implements CameraBridgeViewBase.CvCameraViewListener2 {
     private GripPipeline gripPipeline = new GripPipeline();
     private int viewMode = 0;
+    private float H = 95;
     private Point centerOfBiggestBlob = new Point(0,0);
 
     @Override
@@ -52,7 +53,7 @@ public class OpMode extends OpModeBase implements CameraBridgeViewBase.CvCameraV
         // This is where the magic will happen. inputFrame has all the data for each camera frame.
         Mat mRgba = inputFrame.rgba();
 
-        gripPipeline.process(mRgba);
+        gripPipeline.process(mRgba, this.H);
 
         switch (this.viewMode) {
             case 0:
@@ -110,7 +111,22 @@ public class OpMode extends OpModeBase implements CameraBridgeViewBase.CvCameraV
     public void incrementView() {
         this.viewMode++;
         this.viewMode = this.viewMode%5;
+
     }
+    public void incrementH(){
+        this.H++;
+
+
+    }
+    public void decrementH(){
+        this.H--;
+
+    }
+
+    public float getH() {
+        return this.H;
+    }
+
 
     public Point getCenterOfBiggestBlob() {
         return centerOfBiggestBlob;
