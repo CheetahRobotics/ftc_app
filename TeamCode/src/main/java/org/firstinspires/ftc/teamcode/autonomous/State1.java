@@ -9,7 +9,7 @@ public class State1 extends DrivingState {
         super(stateMachine,
                 0.0,
                 45.0,
-                State2.class,
+                DropOff5.class,
                 -0.5,
                 0.5);
     }
