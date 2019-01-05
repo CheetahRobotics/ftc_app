@@ -29,7 +29,7 @@ public class State1 extends StateBase {
         leftDrive  = hardwareMap.get(DcMotor.class, "motor_1");
         rightDrive = hardwareMap.get(DcMotor.class, "motor_2");
         arm = hardwareMap.get(DcMotor.class,"motor_3");
-        servo = hardwareMap.get(Servo.class, "main _hand");
+        servo = hardwareMap.get(Servo.class, "servo");
     }
 
 
@@ -55,6 +55,7 @@ public class State1 extends StateBase {
         double turn  = gamepad.left_stick_y;
         float lift = -gamepad.right_trigger;
         float drop = gamepad.left_trigger;
+      
 
         leftPower   = Range.clip(drive + turn, -1.0, 1.0) ;
         rightPower   = Range.clip(drive - turn, -1.0, 1.0) ;
@@ -74,6 +75,22 @@ public class State1 extends StateBase {
         addTelemetry("Power", " Drive: %f, Turn: %f ",
                 leftPower, rightPower);
         addTelemetry("Servo Position", "%5.2f", position);
+    }
+    public void leftBumperChanged(boolean left_bumper) {
+        if (left_bumper = true){
+            position= position+.1;
+        }
+        addTelemetry("Left Bumper", "%s", Boolean.toString(left_bumper));
+
+    }
+    public void rightBumperChanged(boolean right_bumper) {
+        if (right_bumper = true){
+            position= position-.1;
+
+        }
+
+        addTelemetry("Right Bumper", "%s", Boolean.toString(right_bumper));
+
     }
 }
 
