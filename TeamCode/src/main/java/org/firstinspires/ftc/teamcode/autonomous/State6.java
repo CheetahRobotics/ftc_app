@@ -11,8 +11,8 @@ public class State6 extends DrivingState {
                 0.0,
                 100.0,
                 Stop.class,
-                0.5,
-                -.5);
+                -0.5,
+                0.5);
         // placing the flag
     }
 }

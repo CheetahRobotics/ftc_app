@@ -9,8 +9,8 @@ public class State3 extends DrivingState {
                 0.0,
                 27.0,
                DropOff5.class,
-                -0.5,
-                .5);
+                0.5,
+                -0.5);
     }
 }
 

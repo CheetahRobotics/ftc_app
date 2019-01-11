@@ -55,6 +55,8 @@ public class State1 extends StateBase {
         double turn  = gamepad.left_stick_y;
         float lift = -gamepad.right_trigger;
         float drop = gamepad.left_trigger;
+
+        this.servo.setPosition(position);
       
 
         leftPower   = Range.clip(drive + turn, -1.0, 1.0) ;
@@ -63,6 +65,7 @@ public class State1 extends StateBase {
         droppower = Range.clip(drop,-1,1);
 
         leftDrive.setPower(leftPower);
+
         rightDrive.setPower(rightPower);
         arm.setPower(liftpower);
         arm.setPower(droppower);
@@ -77,15 +80,15 @@ public class State1 extends StateBase {
         addTelemetry("Servo Position", "%5.2f", position);
     }
     public void leftBumperChanged(boolean left_bumper) {
-        if (left_bumper = true){
-            position= position+.1;
+        if (left_bumper == true){
+            position= position+.25;
         }
         addTelemetry("Left Bumper", "%s", Boolean.toString(left_bumper));
 
     }
     public void rightBumperChanged(boolean right_bumper) {
-        if (right_bumper = true){
-            position= position-.1;
+        if (right_bumper == true){
+            position= position-.25;
 
         }
 
