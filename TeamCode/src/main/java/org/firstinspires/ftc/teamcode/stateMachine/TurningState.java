@@ -10,8 +10,8 @@ public class TurningState extends DrivingState{
                 0.0,
                 10000.0,
                 nextState,
-                isLeftTurn ? 0 : -.5 ,
-                isLeftTurn ? .5 : 0
+                isLeftTurn ? 0 : -.25 ,
+                isLeftTurn ? .25 : 0
         );
     }
     @Override

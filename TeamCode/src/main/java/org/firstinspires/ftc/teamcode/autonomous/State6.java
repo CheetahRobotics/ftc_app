@@ -9,10 +9,10 @@ public class State6 extends DrivingState {
     public State6(StateMachine stateMachine) {
         super(stateMachine,
                 0.0,
-                100.0,
+                125.0,
                 Stop.class,
-                -0.5,
-                0.5);
+                -1.0,
+                1.0);
         // placing the flag
     }
 }

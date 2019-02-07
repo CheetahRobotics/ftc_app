@@ -59,8 +59,8 @@ public class State1 extends StateBase {
         this.servo.setPosition(position);
       
 
-        leftPower   = Range.clip(drive + turn, -1.0, 1.0) ;
-        rightPower   = Range.clip(drive - turn, -1.0, 1.0) ;
+        leftPower   = Range.clip(drive + turn, -0.5, 0.5) ;
+        rightPower   = Range.clip(drive - turn, -0.5, 0.5) ;
         liftpower = Range.clip(lift,-1,1.0);
         droppower = Range.clip(drop,-1,1);
 
@@ -75,7 +75,7 @@ public class State1 extends StateBase {
                 gamepad.left_stick_x, gamepad.left_stick_y);
         addTelemetry("Arm", "Lift: %f, Drop: %f",
                 gamepad.left_trigger, gamepad.right_trigger);
-        addTelemetry("Power", " Drive: %f, Turn: %f ",
+        addTelemetry("Power", " left power: %f, right power: %f ",
                 leftPower, rightPower);
         addTelemetry("Servo Position", "%5.2f", position);
     }
